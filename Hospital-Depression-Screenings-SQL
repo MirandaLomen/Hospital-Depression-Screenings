@@ -1,0 +1,42 @@
+-- Goal: Use depression screenings performed each year as well as patient demographics 
+--       Group which demographics had the largest amount of screenings per year
+
+# Combined Data Using
+	#SELECT *
+	#FROM patient_demographics
+	#JOIN depression_screenings
+		#ON patient_demographics.patient_dem = depression_screenings.patient_scr;
+
+# Used Combined Data for Analysis
+SELECT *
+FROM screenings_dem_year;
+
+# Amount of depression screenings performed each year
+SELECT year, COUNT(patient)
+FROM screenings_dem_year
+GROUP BY year;
+
+# Amount of screenings performed each year by gender
+SELECT gender, year, COUNT(*) AS patient_count
+FROM screenings_dem_year
+GROUP BY gender, year
+ORDER BY year, gender;
+
+# Amount of screenings performed each year by marital status
+SELECT marital_status, year, COUNT(*) AS patient_count
+FROM screenings_dem_year
+GROUP BY marital_status, year
+ORDER BY year, marital_status;
+
+# Amount of screenings performed each year by age range
+SELECT age_range, year, COUNT(*) AS patient_count
+FROM screenings_dem_year
+GROUP BY age_range, year
+ORDER BY year, age_range;
+
+# Amount of screenings performed each year by race
+SELECT race, year, COUNT(*) AS patient_count
+FROM screenings_dem_year
+GROUP BY race, year
+ORDER BY year, race;
+
